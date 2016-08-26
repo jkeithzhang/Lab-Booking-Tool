@@ -1,0 +1,52 @@
+.modal
+	.modal-dialog
+		.modal-content
+			.modal-header
+				div.modal-title 
+					div(class='label' style="color:black;") Add Node
+					button.close(ng-click='$hide()') x 
+
+			.modal-body
+				div.addNodePanel(ng-controller='nodeBookingCtrl')
+					form(ng-submit="addNode(node)")
+						table.table.row
+							tr 
+								td 
+									div(flash-alert='error', active-class='in alert', class='fade')
+										span.alert-message {{flash.message}}
+									div(flash-alert='success', active-class='in alert', class='fade')
+										span.alert-message {{flash.message}}
+							tr 
+								td
+									input.medium(ng-model='node.ip', placeholder='ACTIVE IP', required)
+							tr 
+								td
+									select.medium.form-control(style='display:inline' ng-model='node.type', ng-init='parseType()', ng-change='changeSize(node)', ng-options='i.type for i in items' required)
+										option(value="") --SELECT A TYPE--
+								td
+									a.pe-7s-plus.pe-2x.pe-va(ng-if='!showTypePanel', ng-click='showAddTypePanel()')
+									a.pe-7s-close.pe-2x.pe-va(ng-if='showTypePanel', ng-click='hideAddTypePanel()')
+								td
+									div.slide(ng-if='showTypePanel')
+										input(name='newType', size='150', ng-model='newObj.newType', placeholder='TYPE') 
+										input(name='newSize', size='150', ng-model='newObj.newSize', placeholder='SIZE') 
+										button.btn.btn-primary(type='button', ng-click='addNewType()') OK								
+							tr 
+								td
+									input.medium(ng-model='node.username', placeholder='USERNAME', required)
+							tr 
+								td
+									input.medium(ng-model='node.password', placeholder='PASSWORD', required)
+							tr 
+								td 
+									input.small(ng-model='node.position.row', placeholder='ROW', required) 
+									&nbsp;
+									input.small(ng-model='node.position.rack', placeholder='RACK', required) 
+									&nbsp;
+									input.small(ng-model='node.position.pos', placeholder='POSITION', required) 
+							tr 
+								td
+									input.small(ng-model='node.position.size', placeholder='SIZE', required)
+							tr
+								td
+									button.btn.btn-primary(type="submit") OK

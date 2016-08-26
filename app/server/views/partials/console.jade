@@ -1,0 +1,18 @@
+.modal#console
+	.modal-dialog
+		.modal-content
+			.modal-header
+				.title {{node.ip}}
+					.pull-right.closeConsole 
+						//- i.pe-7s-power.pe-lg.pe-va(ng-click='sendCommand("logout"); $hide()')
+			.modal-body
+				//- .close
+				//- 	i.fa.fa-times
+				pre.content(ng-bind='cliPanel')
+				
+			.modal-footer
+				.control.row
+					form(ng-init='focusInput=true')
+						input.col-xs-10.cli(type='text', ng-model='cliCommand.text', placeholder='ClI command goes here', focus-me='focusInput')
+						span.col-xs-2
+							button.btn.btn-primary(ng-click='sendCommand(cliCommand.text)') SEND

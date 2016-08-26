@@ -1,0 +1,47 @@
+.row#parts-header
+	.table-container(ng-init='skipPing()')
+		.search 
+			i.pe-7s-search.pe-2x.pe-va
+			input(ng-model='searchText')
+.row#parts-body
+	.container
+		button(ng-click='pingAllNodes()') all nodes
+		button(ng-click='skipPing()') Skip Ping
+		table.table.table-striped
+			thead
+				tr.row-title
+					th(ng-click="order('sn')", ng-class="{active:isActive('sn')}") SN &nbsp;
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('sn') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('sn') && !reverse")
+					th(ng-click="order('type')", ng-class="{active:isActive('type')}") TYPE 
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('type') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('type') && !reverse")
+					th(ng-click="order('ip')", ng-class="{active:isActive('ip')}") IP 
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('ip') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('ip') && !reverse")
+					th
+					th 
+					th(ng-click="order('oper')", ng-class="{active:isActive('oper')}") OPER 
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('oper') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('oper') && !reverse")
+					th(ng-click="order('version')", ng-class="{active:isActive('version')}") VERSION 
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('version') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('version') && !reverse")
+					th(ng-click="order('endDate')", ng-class="{active:isActive('endDate')}") END 
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('endDate') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('endDate') && !reverse")
+					th(ng-click="order('owner')", ng-class="{active:isActive('owner')}") OWNER 
+						i.pe-7s-angle-up.pe-lg.pe-va(ng-if="isActive('owner') && reverse")
+						i.pe-7s-angle-down.pe-lg.pe-va(ng-if="isActive('owner') && !reverse")
+			tbody
+				tr.table.table-striped(ng-repeat='card in labParts | filter:searchText')
+					td(ng-class="{order:isActive('sn')}") {{card.sn}} 
+					td(ng-class="{order:isActive('type')}") {{card.type}}
+					td(ng-class="{order:isActive('ip')}") {{card.ip}}
+					td {{card.slot}}
+					td {{card.node.position.row}}-{{card.node.position.rack}}-{{card.node.position.pos}}
+					td(ng-class="{order:isActive('oper')}") {{card.oper}}
+					td(ng-class="{order:isActive('version')}") {{card.version}}
+					td(ng-class="{order:isActive('endDate')}") {{card.endDate}}
+					td(ng-if='card.owner', ng-class="{order:isActive('owner')}") {{card.owner}} 
+											

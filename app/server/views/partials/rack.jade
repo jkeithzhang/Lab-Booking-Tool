@@ -1,0 +1,37 @@
+.row.row-panel
+	.col-lg-2.rack(ng-repeat='i in getNumber(racks) track by $index')
+		div.rack-title.row {{$index+1}}
+		div.row
+			ul 
+				li(ng-repeat='rec in nodesInRack($index+1)')
+					div.node(class='{{nodeStyle(rec)}}', style="height: {{nodeHeight(rec)}}")
+						.row
+							.col-md-10.node-main
+								span.pull-left.node-ip {{rec.ip}}
+									//- span.owner-info(ng-if='rec.owner', ng-controller='userInfoPopoverCtrl') 
+									//- 	i.pe-7s-user.pe-lg.pe-va 
+									//- 	a(ng-click="setUser(rec)", title='{{popover.title}}', data-content='{{popover.content}}', data-template='../partials/userInfo', data-animation="am-flip-x", bs-popover) {{rec.owner}}
+								
+								
+								p.node-info
+									i.pe-7s-ticket.pe-lg.pe-va 
+									span.node-text &nbsp; {{rec.type}} &middot; {{rec.version}}
+									div.owner-info(ng-if='rec.owner', ng-controller='userInfoPopoverCtrl') 
+										i.pe-7s-user.pe-lg.pe-va 
+										span &nbsp; 
+											a(ng-click="setUser(rec)", title='{{popover.title}}', data-content='{{popover.content}}', data-template='../partials/userInfo', data-animation="am-flip-x", bs-popover) {{rec.owner}}
+										
+							.col-md-2
+								.row.cpanel(ng-controller='sshLinkCtrl')
+									div
+										i.pe-7s-refresh.pe-lg.pe-va.book-ping(ng-if="user.authorized && (rec.status == 'dead') && (!spinning)", ng-click="pingNode(rec)")
+										span(us-spinner='{radius:4, width:1, length: 3}', spinner-key="{{spinnerKey}}", ng-init='setSpinnerKey(rec)')
+									div(ng-if="!rec.owner && user.authorized", ng-controller='modalCtrl')
+										i.pe-7s-date.pe-lg.pe-va.book-submit(ng-click='setNodeForUser(rec, user)', data-animation='am-fade-and-slide-top', data-template='../partials/book-modal', bs-modal="modal")
+									div(ng-if="user.authorized && nodeIsMine(rec)", ng-controller='modalCtrl')
+										i.pe-7s-edit.pe-lg.pe-va.book-submit(ng-click='setNodeForUser(rec)', data-animation='am-fade-and-slide-top', data-template='../partials/book-modal', bs-modal="modal")
+							
+
+		//- li(ng-repeat='node in nodesInRack')
+		//- 	div.node {{node.ip}}
+	

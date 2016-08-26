@@ -1,0 +1,15 @@
+.row
+	.container
+		.col-md-3
+			.bs-sidebar.affix-top(bs-scrollspy-list, bs-affix, role='complementary', data-offset-top='-50')
+				ul.bs-sidenav.nav
+					li(ng-repeat='item in errors track by $index', data-target='#err_{{item.id}}', bs-scrollspy)
+						a(href='#err_{{item.id}}') {{item.name}}
+		.col-md-9
+			.bs-docs-section
+				div(ng-repeat='item in errors track by $index')
+					div.page-header(id='err_{{item.id}}') 
+						h1 {{item.name}}
+					.bs-callout.bs-callout-info
+						h4 Detail
+						p {{item.detail}}

@@ -1,0 +1,15 @@
+div(flash-alert='success', active-class='in alert', class='alert fade')
+	strong.alert-heading Done!
+	span.alert-message {{flash.message}}
+
+div(flash-alert='error', active-class='in alert', class='alert fade')
+	strong.alert-heading Error!
+	span.alert-message {{flash.message}}
+
+div(flash-alert='info', active-class='in alert', class='alert fade')
+	strong.alert-heading Info!
+	span.alert-message {{flash.message}}
+
+div(flash-alert='warning', active-class='in alert', class='alert fade')
+	strong.alert-heading Warning!
+	span.alert-message {{flash.message}}

@@ -1,0 +1,53 @@
+.row#scriptCtrl
+	.container(ng-init='getAllScripts()')
+		.col-md-3
+			.bs-sidebar.affix-top(bs-scrollspy-list, bs-affix, role='complementary', data-offset-top='-50')
+				ul.bs-sidenav.nav
+					li(ng-repeat='item in allScripts track by $index', data-target='#script_{{item.name}}', bs-scrollspy)
+						a(href='#script_{{item.name}}') {{item.name}}
+		.col-md-9
+			.bs-docs-section
+				div(ng-repeat='item in allScripts track by $index')
+					div.page-header(id='script_{{item.name}}') 
+						h1 {{item.name}}
+						table.table
+							tr
+								td.pull-right CONNECT TO NODE: 
+								td
+									input(placeholder='Host', ng-model='checkingObj.host') 
+							tr
+								td &nbsp;
+								td
+									input(placeholder='Username', ng-model='checkingObj.username') &nbsp; &nbsp;
+									input(placeholder='Password', ng-model='checkingObj.password')
+							tr
+								td.pull-right RUN THIS COMMAND: 
+								td
+									input(placeholder='Command', ng-model='checkingObj.command')
+							tr
+								td.pull-right IF MATCHES THIS: 
+								td
+									input(placeholder='Regex', ng-model='checkingObj.regex')
+							tr
+								td.pull-right THEN DO THIS: 
+								td
+									input(placeholder='Action', ng-model='checkingObj.action')
+							tr 
+								td &nbsp;
+								td 
+									input(placeholder='Interval', ng-model='checkingObj.interval')
+							tr 
+								td &nbsp;
+								td
+									button.btn.btn-primary(ng-click='fanCheck()', ng-if='!timerRunning') START
+									button.btn.btn-warning(ng-click='stopTimer()', ng-if='timerRunning') 
+										i.pe-7s-clock.pe-lg.pe-va(ng-if='timerRunning')
+										&nbsp;
+										timer(ng-if='timerRunning') {{hhours}}:{{mminutes}}:{{sseconds}}
+							tr 
+								td INSTANCE MATCHED 
+								td {{found}}
+										//- input(ng-if='started', ng-model='runningTime') 
+				//- 	.bs-callout.bs-callout-info
+				//- 		h4 Detail
+				//- 		p {{item.detail}}

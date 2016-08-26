@@ -1,0 +1,353 @@
+.add-sig
+	a 
+		cursor pointer
+		color white
+.addCatPanel,
+.addRelPanel
+	padding 4px 15px
+
+.addRelPanel
+	input 
+		padding 0 10px
+	button 
+		padding 5px 10px
+		margin-left 5px
+
+.sub-nav.hc
+	background purple !important
+
+.navbar 
+	.btn.clickable:focus
+		outline none
+		box-shadow none
+	.btn.clickable 
+		background none
+		opacity 0.3
+		padding 5px 30px
+		&:hover
+			opacity 0.9
+
+.sub-nav
+	position relative
+	z-index 0
+	min-height 0 !important
+	.sub-nav-tabs
+		border-bottom 0
+.sub-nav.signatures
+	background #5bc0de
+
+.componenet-title
+	// color pink
+
+.clickable
+	cursor pointer
+	opacity 0.6
+	&:hover
+		opacity 0.9
+
+#addSigPanel
+	textarea
+		margin-bottom 10px
+		border-color #eee
+		padding 10px
+		width 100%
+		font-weight 200
+		height 44px
+		&:disabled
+			border none
+			border-left 3px solid callout-bd
+			background callout-bg
+		&:focus
+			outline none
+	input 
+		width 140px
+		padding-left 10px
+		text-align left
+	input.signature-name™
+		width 100%
+	input.signature-level
+		width 45%
+	input.signature-threshold
+		width 45%
+	input.signature-action,
+	input.signature-dts,
+	input.signature-fix,
+	input.signature-rn,
+	input.signature-ta
+		width 100%
+	.text 
+		padding 14px
+	.pe-7s-plus,
+	.pe-7s-close
+		cursor pointer
+		opacity 0.6
+		&:hover
+			opacity 1
+
+.componentPanel
+	margin-bottom 30px
+	font-size 15px
+	.header 
+		margin-left 15px
+		margin-right 15px
+		.name
+			color #555
+			font-weight 400
+			padding 10px
+			text-align right
+		.detail
+			font-weight 100
+			color #999
+			padding 10px
+		.editSigDetail
+			cursor pointer
+			opacity 0.6
+			&:hover
+				opacity 1
+
+.editPanel
+	background #f5f5f5
+	padding 10px 20px
+	margin-top 5px
+	.btn.clickable:focus
+		outline none
+		box-shadow none
+	.btn.clickable 
+		background none
+		opacity 0.3
+		&:hover
+			opacity 0.9
+	.nav-tabs
+		border 0 !important
+		li
+			cursor pointer 
+		li.active 
+			a 
+				border 0 !important
+				background transparent !important
+				font-weight 400
+				text-shadow 1px 2px 3px rgba(0,0,0,0.3)
+				&:hover
+					background-color none !important
+					border none !important
+	.nav 
+		li 
+			a 
+				border none
+				&:hover
+					border-color transparent !important
+					border-radius 0
+
+	.tab-content 
+		padding 0 15px
+
+.testPanel
+	// border-top 1px solid #eee
+	-webkit-transition all 0.4s
+	-moz-transition all 0.4s
+	-o-transition all 0.4s
+	transition all 0.4s
+	.vertical-regex
+		// transform rotate(90deg)
+		transform-origin left top 0
+		background #fff 
+		float left
+		color #bce8f1
+		font-weight 100
+	.vertical-context
+		// transform rotate(90deg)
+		// transform-origin left top 0
+		background #fff 
+		float left
+		color #bce8f1
+		font-weight 100
+	textarea
+		margin-bottom 10px
+		border-color #eee
+		padding 10px
+		width 100%
+		font-weight 200
+		height 44px
+		&:disabled
+			border none
+			border-left 3px solid callout-bd
+			background callout-bg
+		&:focus
+			outline none
+	.options
+		opacity 0.8
+		margin-left -70px
+		text-align right
+		.label 
+			border-radius 0 !important
+			padding 10px
+			background #bce8f1
+			font-weight 100
+		.title 
+			float right
+		.title.public 
+			background green-light
+		.btn:focus
+			outline none
+			box-shadow none
+		.btn 
+			background none
+			opacity 0.3
+			&:hover
+				opacity 0.9
+
+	.container 
+		width 100%
+	.testContainer
+		background #fff 
+		border 1px solid #efefef
+		padding 10px 
+		margin 10px -50px
+		border-radius 4px
+		opacity 0.9
+
+		.controlPanel
+			padding-left 0
+		.matchPanel
+			border-left 1px solid #5cb85c
+			padding-right 0
+			.success
+				color #5cb85c
+			.vertical
+				transform rotate(90deg)
+				transform-origin left top 0
+				margin-left -6px
+				background #fff 
+				float left
+				font-weight 100
+		.options 
+			.mine 
+				background yellow
+		.container 
+			.mine
+				.vertical-regex,
+				.vertical-context
+					color yellow
+				textarea
+					&:disabled
+						border-left 3px solid yellow
+						background callout-bg
+					&:focus
+						outline none
+	.addTest
+		margin-right 20px
+		opacity 0.6
+
+.testPanelOption
+	margin-top 10px
+
+.center
+	text-align center
+
+.panel-title-panel
+	text-align center
+	.panel-title
+		font-size 20px
+		background dark
+		color white
+		padding 5px 10px
+		box-shadow 1px 2px 4px rgba(0,0,0,0.5)
+		font-style italic
+	.panel-sub-title
+		font-size 16px 
+		margin-top 15px
+		margin-bottom 30px
+		font-style italic
+
+.upload-panel
+	margin-top 20px
+	margin-bottom 20px
+	thead
+		background #efefef
+	.progress
+		height 3px
+		width 80%
+		// margin-top 8px
+		margin-bottom 0
+		vertical-align middle
+		.progress-bar
+			background-color green-light
+	.file-name
+		font-weight 500
+	.fa-check
+		color green-light
+	.fa-cancel
+		color yellow
+	.fa-times
+		color pink
+	.controls
+		font-size 16px
+		color dark-grey
+		i
+			cursor pointer
+			opacity 0.6
+			&:hover
+				opacity 0.9
+	.control-panel
+		text-align center
+		margin-top 60px 
+		.upload-all,
+		.cancel-all,
+		.remove-all
+			
+			font-size 20px
+			border-radius 200px
+			color white 
+			opacity 0.6
+			cursor pointer 
+			margin 5px
+			-webkit-transition all 0.4s
+			-moz-transition all 0.4s
+			-o-transition all 0.4s
+			transition all 0.4s
+			&:hover
+				opacity 0.8
+				box-shadow 1px 2px 3px rgba(0,0,0,0.5)
+			i 
+				color white !important
+		.upload-all
+			background txt-blue 
+			padding 17px 17px
+		.cancel-all
+			background yellow
+		.remove-all
+			background pink
+			padding 17px 22px
+
+	.table 
+		td 
+			vertical-align middle
+			padding 12px
+			.success
+				color green-light
+			.attention
+				color pink-light
+		// min-height 200px
+
+.upload-panel-empty
+	width 100%
+	color dark-grey
+	background #f5f5f5
+	text-align center
+	border 2px dashed #aaa
+	border-radius 12px 
+	font-size 50px
+	padding 100px
+	opacity 0.3
+	&:hover 
+		opacity 0.5
+
+.hc-unauthorized
+	// background #f5f5f5
+	opacity 0.7
+	text-align center
+	font-size 20px
+	height 100%
+	padding 100px
+	h1 
+		font-weight 100

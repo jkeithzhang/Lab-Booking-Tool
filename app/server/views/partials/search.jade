@@ -1,0 +1,49 @@
+div(ng-controller='searchEngine', 'dateUpdate')
+	.container
+		h1 Search
+		hr
+		form
+			table.table.row
+				tr
+					td
+						div(flash-alert='error', active-class='in alert', class='fade')
+							span.alert-message {{flash.message}}
+						div(flash-alert='success', active-class='in alert', class='fade')
+							span.alert-message {{flash.message}}
+				tr
+					td  Date updated: {{Date}}
+				tr
+					td
+						form
+							input.medium(ng-model='inputSearch', placeholder='search for...')
+							&nbsp;
+							span
+								button.btn.btn-primary(type="submit", ng-click="Vun(inputSearch);startSpin()") Search
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							span(us-spinner, style="position:relative;" spinner-key="spinner-1")
+				tr
+					td  Be sure to enter the entire value you are searching for.
+		hr
+		table.table.row
+			thead
+				tr.head
+					th System Type
+					th System Version
+					th Owner
+					th Mgmt IP
+					th Equipment
+					th Slot
+					th Serial Number
+					th Part Number
+					th State
+			tbody
+				tr.booking-table.table.table-striped(ng-repeat='i in Restify track by $index', ng-class='even')
+					td {{i.sysType}}
+					td {{i.sysVersion}}
+					td {{i.ownerInfo}}
+					td {{i.mgmtIP}}
+					td {{i.cardType}}
+					td {{i.Slot}}
+					td {{i.SN}}
+					td {{i.partNum}}
+					td {{i.State}}

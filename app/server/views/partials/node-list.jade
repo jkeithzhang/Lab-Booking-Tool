@@ -1,0 +1,19 @@
+.row.row-offcanvas.row-offcanvas-right.tab-content
+	div#booking.col-xs-8.tab-pane.active
+		table.booking-table.table.table-striped(ng-switch='nodeList.length')
+			thead
+				tr
+					th IP 
+					th TYPE
+					th VERSION
+					th START
+					th END 
+					th BOOK
+					th SSH
+			tbody(ng-switch-when='0')
+				tr
+					td No nodes detected
+			tbody(ng-switch-default) 
+				tr(ng-repeat='node in nodeList')
+					td {{node.ip}}
+					td {{node.status}}

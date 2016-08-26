@@ -1,0 +1,7 @@
+div(ng-controller='labMapCtrl')
+	div(ng-repeat='i in getNumber(rows) track by $index', ng-class-even="'labMapPanelEven'", ng-class-odd="'labMapPanelOdd'")
+		.container
+			div.row-title-panel
+				span.row-title Row {{$index + 1}}
+			my-rack(data='d3Data', row='$index + 1', callback-fn='getRackInRow(arg)', user='user')
+	

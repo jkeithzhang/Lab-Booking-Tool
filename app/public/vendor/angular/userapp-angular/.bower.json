@@ -1,0 +1,19 @@
+{
+  "name": "userapp-angular",
+  "version": "2.0.3",
+  "main": "./angularjs.userapp.js",
+  "dependencies": {
+    "userapp": "latest"
+  },
+  "homepage": "https://github.com/userapp-io/userapp-angular",
+  "_release": "2.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.3",
+    "commit": "dabfb3bd2a7eb56864712794e0e2ccac40ba04e2"
+  },
+  "_source": "git://github.com/userapp-io/userapp-angular.git",
+  "_target": "~2.0.3",
+  "_originalSource": "userapp-angular",
+  "_direct": true
+}

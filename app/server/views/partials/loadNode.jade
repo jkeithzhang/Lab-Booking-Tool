@@ -1,0 +1,69 @@
+.row(class='background-{{filter}}', ng-init='getAllNodeLogRegistry()')
+	//- free nodes view
+	.table-container(ng-if="filter == 'free'")
+		table.booking-table.table.table-striped.table-hover(ng-table="tableParams", show-filter="true")
+			tr(ng-repeat='node in $data', class="{{node.status}}")
+				td.col-md-1(style="text-align:center" title="'Status'")
+					i.pe-7s-signal.pe-lg.pe-va(class='icon-{{node.status}}')
+				td.col-md-1(style="text-align:center" title="'Row'" filter="{row: 'text'}" sortable="'row'") {{node.row}}
+				td.col-md-1(style="text-align:center" title="'Rack'" filter="{rack: 'text'}" sortable="'rack'") {{node.rack}}
+				td.col-md-2(style="text-align:center" title="'IP'" filter="{ip: 'text'}" sortable="'ip'") {{node.ip}}
+				td.col-md-2(style="text-align:center" title="'Type'" filter="{type: 'text'}" sortable="'type'") {{node.type}}
+				td.col-md-2(style="text-align:center" title="'Version'" filter="{version: 'text'}" sortable="'version'") {{node.version}}
+				td.col-md-2(style="text-align:center")
+					a(ng-if='hasLog(node.ip)', ng-click='getHistory(node)',  ng-controller='modalCtrl', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/history-modal', bs-modal="modal") History				
+				td.col-md-2(style="text-align:center")
+					i.pe-7s-date.pe-lg.pe-va.book-submit(ng-if="user.authenticated" ng-controller='modalCtrl', ng-click='setNode(node);connectNode(node)', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/book-modal', bs-modal="modal")
+	//- busy nodes view
+	.table-container(ng-if="filter == 'busy'")
+		table.booking-table.table.table-striped.table-hover(ng-table="tableParams", show-filter="true")
+			tr(ng-repeat='node in $data', class="{{node.status}}")
+				td.col-md-1(style="text-align:center" title="'Status'")
+					i.pe-7s-signal.pe-lg.pe-va(class='icon-{{node.status}}')
+				td.col-md-1(style="text-align:center" title="'Row'" filter="{row: 'text'}" sortable="'row'") {{node.row}}
+				td.col-md-1(style="text-align:center" title="'Rack'" filter="{rack: 'text'}" sortable="'rack'") {{node.rack}}
+				td.col-md-1(style="text-align:center" title="'IP'" filter="{ip: 'text'}" sortable="'ip'") {{node.ip}}
+				td.col-md-1(style="text-align:center" title="'Type'" filter="{type: 'text'}" sortable="'type'") {{node.type}}
+				td.col-md-1(style="text-align:center" title="'Version'" filter="{version: 'text'}" sortable="'version'") {{node.version}}
+				td.col-md-2(style="text-align:center" title="filter == 'free' ? '' : 'StartDate'" filter="{startDate: 'text'}" sortable="'startDate'" ng-if="(filter == 'busy' || filter == 'mine' || filter == 'config')") {{node.startDate}}
+				td.col-md-2(style="text-align:center" title="filter == 'free' ? '' : 'EndDate'" filter="{endDate: 'text'}" sortable="'endDate'" ng-if="(filter == 'busy' || filter == 'mine' || filter == 'config')") {{node.endDate}}
+				td.col-md-1(style="text-align:center" title="(filter == 'busy' || filter == 'config') ? 'Owner': ''" filter="{name: 'text'}" sortable="(filter == 'busy' || filter == 'config') ? 'name' : ''" ng-if="(filter == 'busy' || filter == 'config')", ng-controller='userInfoPopoverCtrl') 
+					a(ng-if='node.owner', ng-click="setUser(node)", title='{{popover.title}}', data-content='{{popover.content}}', data-template='../partials/userInfo', data-animation="am-flip-x", bs-popover) {{node.ownerObj.first_name | capitalize}} {{node.ownerObj.last_name | capitalize}}
+				td.col-md-1(style="text-align:center")
+					a(ng-if='hasLog(node.ip)', ng-click='getHistory(node)',  ng-controller='modalCtrl', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/history-modal', bs-modal="modal") History
+	//- my booked nodes view
+	.table-container(ng-if="filter == 'mine'")
+		table.booking-table.table.table-striped.table-hover(ng-table="tableParams", show-filter="true")
+			tr(ng-repeat='node in $data', class="{{node.status}}")
+				td.col-md-1(style="text-align:center" title="'Status'")
+					i.pe-7s-signal.pe-lg.pe-va(class='icon-{{node.status}}')
+				td.col-md-1(style="text-align:center" title="'Row'" filter="{row: 'text'}" sortable="'row'") {{node.row}}
+				td.col-md-1(style="text-align:center" title="'Rack'" filter="{rack: 'text'}" sortable="'rack'") {{node.rack}}
+				td.col-md-1(style="text-align:center" title="'IP'" filter="{ip: 'text'}" sortable="'ip'") {{node.ip}}
+				td.col-md-1(style="text-align:center" title="'Type'" filter="{type: 'text'}" sortable="'type'") {{node.type}}
+				td.col-md-1(style="text-align:center" title="'Version'" filter="{version: 'text'}" sortable="'version'") {{node.version}}
+				td.col-md-2(style="text-align:center" title="'StartDate'" filter="{startDate: 'text'}" sortable="'startDate'") {{node.startDate}}
+				td.col-md-2(style="text-align:center" title="'EndDate'" filter="{endDate: 'text'}" sortable="'endDate'") {{node.endDate}}
+				td.col-md-2(style="text-align:center" ng-if="user.authenticated && filter == 'mine'", ng-controller='modalCtrl')
+					i.pe-7s-edit.pe-lg.pe-va.book-submit(ng-controller='modalCtrl', ng-click='setNode(node);connectNode(node)',  data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/book-modal', bs-modal="modal")
+	//- admin view
+	.table-container(ng-if="filter == 'config' && user.authenticated && user.permissions.admin.value")
+		.col-md-1.col-md-offset-10
+			a.btn.btn-primary(data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/add-node-modal', bs-modal="modal") add node
+		.col-md-1
+			a.btn.btn-primary(data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/delete-node-modal', bs-modal="modal") delete node
+		table.booking-table.table.table-striped.table-hover(ng-table="tableParams", show-filter="true")
+			tr(ng-repeat='node in $data', class="{{node.status}}")
+				td.col-md-1(style="text-align:center" title="'Status'")
+					i.pe-7s-signal.pe-lg.pe-va(class='icon-{{node.status}}')
+				td.col-md-1(style="text-align:center" title="'Row'" filter="{row: 'text'}" sortable="'row'") {{node.row}}
+				td.col-md-1(style="text-align:center" title="'Rack'" filter="{rack: 'text'}" sortable="'rack'") {{node.rack}}
+				td.col-md-1(style="text-align:center" title="'IP'" filter="{ip: 'text'}" sortable="'ip'") {{node.ip}}
+				td.col-md-1(style="text-align:center" title="'Type'" filter="{type: 'text'}" sortable="'type'") {{node.type}}
+				td.col-md-1(style="text-align:center" title="'Version'" filter="{version: 'text'}" sortable="'version'") {{node.version}}
+				td.col-md-1(style="text-align:center" title="filter == 'free' ? '' : 'StartDate'" filter="{startDate: 'text'}" sortable="'startDate'" ng-if="(filter == 'busy' || filter == 'mine' || filter == 'config')") {{node.startDate}}
+				td.col-md-1(style="text-align:center" title="filter == 'free' ? '' : 'EndDate'" filter="{endDate: 'text'}" sortable="'endDate'" ng-if="(filter == 'busy' || filter == 'mine' || filter == 'config')") {{node.endDate}}
+				td.col-md-1(style="text-align:center" title="(filter == 'busy' || filter == 'config') ? 'Owner': ''" filter="{name: 'text'}" sortable="(filter == 'busy' || filter == 'config') ? 'name' : ''" ng-if="(filter == 'busy' || filter == 'config')", ng-controller='userInfoPopoverCtrl') 
+					a(ng-if='node.owner', ng-click="setUser(node)", title='{{popover.title}}', data-content='{{popover.content}}', data-template='../partials/userInfo', data-animation="am-flip-x", bs-popover) {{node.ownerObj.first_name | capitalize}} {{node.ownerObj.last_name | capitalize}}								
+				td.col-md-1(style="text-align:center")
+					a(ng-if='editable(node)', ng-controller='modalCtrl', ng-click='setNode(node)', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/node-edit-modal', bs-modal="modal") Edit	Node

@@ -1,0 +1,23 @@
+.modal
+	.modal-dialog-history
+		.modal-content
+			.modal-header
+				div.modal-title 
+					div(class='label {{ipClass}}') {{history.ip}} 
+					//- span &nbsp; &middot; &nbsp; {{node.type}} &nbsp; &middot; &nbsp;
+					//- span(ng-if='node.version') {{node.version}}
+					button.close(ng-click='$hide()') x 
+
+			.modal-body
+				//- #chart
+				table.table.table-hover
+					thead
+						th START
+						th END
+						th OWNER
+					tr(style="text-align:center;" ng-repeat="log in history.log")
+						td {{log.start}}
+						td {{log.end}}
+						td {{log.owner}}
+
+			.modal-footer()

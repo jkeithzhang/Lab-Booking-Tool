@@ -1,0 +1,43 @@
+.authenticatePanel
+
+	.signupPanel.toggle
+		.banner
+			h1 
+				a.backHome(href='#/loadNodes/free') 
+					i.pe-7s-home.pe-4x.pe-va
+		p.alertMsg#error-msg
+		form(ua-signup, ua-error='error-msg')
+			table.table 
+				tr
+					td
+						input(name='first_name', placeholder='First Name', required) 
+				tr 
+					td 
+						input(name='last_name', placeholder='Last Name', required)
+				tr 
+					td
+						input(name='email', placeholder='Email', required)
+				tr
+					td
+						input(name='login', placeholder='CSL', required)
+				tr 
+					td
+						input(name='password', placeholder='Password', type='password', required)
+				tr 
+					td
+						input(name='properties.extension', placeholder='Ext.', required)
+				tr
+					td &nbsp;
+				tr
+					td
+						button.btn(type='submit') SIGN UP 
+				tr 
+					td 
+						span &nbsp; or &nbsp; 
+				tr
+					td
+						a(href='#login') LOG IN
+							//- i.pe-7s-add-user.pe-3x.pe-va
+
+			
+.patchingPanel &nbsp;

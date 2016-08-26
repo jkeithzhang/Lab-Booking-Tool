@@ -1,0 +1,16 @@
+.popover.row
+	.arrow
+	.popover-content
+		table.table.table-striped
+			tr 
+				td.pull-right
+					i.ss-user
+				td.userinfo {{user.login}}
+			tr
+				td.pull-right 
+					i.ss-mail
+				td.userinfo {{user.email}}
+			tr 
+				td.pull-right 
+					i.ss-phone
+				td.userinfo {{user.properties.extension.value}}

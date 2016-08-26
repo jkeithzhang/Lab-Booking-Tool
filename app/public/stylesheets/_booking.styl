@@ -1,0 +1,337 @@
+
+td 
+	.is-today
+		color txt-blue
+
+.book-ssh,
+.book-config,
+.book-cards,
+.book-history
+	margin 0 auto
+	padding 2px 4px
+	color #888
+	cursor pointer
+	opacity 0.8
+	&:hover
+		opacity 1
+
+.book-ping
+	// font-size 14px 
+	// margin 5px auto
+	padding 2px 4px
+	color #888
+	cursor pointer
+	opacity 0.8
+	&:hover
+		opacity 1
+.book-ping-waiting
+	color txt-blue
+
+
+.quickdate
+	border 1px solid #ddd
+	border-radius 4px
+	padding 5px 10px
+	font-size 0.9em
+	.quickdate-popup
+		border 1px solid #ddd
+		width 300px
+		padding 10px
+		.quickdate-date-input
+			width 200px
+
+.booking-table
+	.table
+		margin-bottom 0 !important
+	tr 
+		td 
+			padding 2px 3px 2px 0 !important
+		td.rackNumber
+			padding-left 22px !important
+			vertical-align middle
+			color #fff
+		td.rackNumber.free
+			background green
+			border-bottom 1px solid green-light
+		td.rackNumber.busy
+			background pink
+			border-bottom 1px solid pink-light
+		td.rackNumber.mine
+			background yellow
+			border-bottom 1px solid #f9c472
+		td.rackNumber.config
+			background orange
+			border-bottom 1px solid orange-light
+	table
+		width 100%
+		td 
+			padding 8px !important
+	a
+		cursor pointer
+		color txt-blue
+		opacity 0.8
+		&:hover
+			opacity 1
+	.live
+		// opacity 1
+		.icon-live
+			color green2
+	.dead
+		// opacity 0.6	
+		color #888
+		.icon-dead
+			color grey
+	
+
+.book-submit
+	background transparent
+	// font-size 14px 
+	margin 5px auto
+	padding 2px 4px
+	color #888
+	cursor pointer
+	&:hover
+		color #333
+
+
+.row-title
+	background none
+	text-align center
+	td 
+		background-color #fff !important
+		width 60px
+	td.row-text
+		width 60px
+		background-color #555 !important
+		padding 3px 8px
+		color #fff
+		font-size 13px
+		font-style italic
+		box-shadow 1px 2px 3px rgba(0,0,0,0.3)
+		position relative
+	// .row-text 
+	// 	background-color #555
+	// 	padding 3px 8px
+	// 	color #fff
+	// 	font-size 13px
+	// 	font-style italic
+	// 	box-shadow 1px 2px 3px rgba(0,0,0,0.3)
+
+.top-nav
+	position relative
+	z-index 10
+	box-shadow 0px 2px 10px rgba(0,0,0,0.3)
+	.username
+		padding 0 15px
+		text-shadow 1px 2px 3px rgba(0,0,0,0.3)
+	.eject-button
+		background transparent !important
+		color dark-light 
+		&:hover
+			background transparent !important
+			color dark
+.sub-nav
+	position relative
+	z-index 0
+	min-height 0 !important
+	.sub-nav-tabs
+		border-bottom 0
+.sub-nav.free
+	background green
+.sub-nav.busy
+	background pink
+.sub-nav.mine
+	background yellow
+.sub-nav.all
+	background txt-blue
+.sub-nav.config
+	background orange
+.sub-nav.parts
+	background dark-light
+
+
+#terminal
+	position absolute
+	width 100%
+	right -100%
+	height 100%
+	-webkit-transition all 0.4s
+	-moz-transition all 0.4s
+	-o-transition all 0.4s
+	transition all 0.4s
+	.control
+		padding-top 20px
+		width 50%
+		height 100%
+		position absolute
+		right 0
+		padding-left 20px
+		#content
+			width 95%
+			height 80%
+			font-size font-small
+			overflow scroll
+		input
+			text-align left
+			width 80%
+			padding 7px
+	.close-terminal
+		position absolute
+		right 49%
+		top 110px
+		background #fff
+		padding 10px
+		margin-right -10px
+		z-index 10
+		i
+			cursor pointer
+			opacity 0.5
+			&:hover
+				opacity 1
+
+
+#booking
+	padding-top 20px
+	-webkit-transition all 0.4s
+	-moz-transition all 0.4s
+	-o-transition all 0.4s
+	transition all 0.4s
+	.booking-table
+		width 100%
+		thead
+			background green
+			color white
+			th 
+				text-align center
+		tbody
+			td 
+				text-align center
+		i
+			color dark-grey
+			cursor pointer
+			&:hover
+				color dark
+// #busy
+// 	padding-top 20px
+// 	-webkit-transition all 0.4s
+// 	-moz-transition all 0.4s
+// 	-o-transition all 0.4s
+// 	transition all 0.4s
+// 	.booking-table
+// 		width 100%
+// 		thead
+// 			background pink
+// 			color white
+// 			th 
+// 				text-align center
+// 		tbody
+// 			td 
+// 				text-align center
+// 		i
+// 			color dark-grey
+// 			cursor pointer
+// 			&:hover
+// 				color dark
+// #mine 
+// 	padding-top 20px
+// 	-webkit-transition all 0.4s
+// 	-moz-transition all 0.4s
+// 	-o-transition all 0.4s
+// 	transition all 0.4s
+// 	.booking-table
+// 		width 100%
+// 		thead
+// 			background yellow
+// 			color white
+// 			th 
+// 				text-align center
+// 		tbody
+// 			td 
+// 				text-align center
+// 		i
+// 			color dark-grey
+// 			cursor pointer
+// 			&:hover
+// 				color dark
+
+.slide-out
+	right 0 !important
+.active-state
+	color txt-blue !important
+	text-shadow 1px 1px 1px rgba(0,0,0,0.2)
+.light-transparent-background
+	background rgba(0,0,0,0.1)
+
+.background-free
+	background #fff
+.background-busy
+	background #fff
+.background-mine 
+	background #fff
+
+.table-container
+	width 100% 
+	padding 20px 75px 0 75px
+	background-color #fff
+thead
+	background-color #DDD
+
+.addNodePanel
+	margin-left auto
+	margin-right auto
+	width 500px
+	text-align center
+	input.medium 
+		width 80%
+	select.medium
+		width 80%
+		text-align center
+	input.small 
+		width 25%
+	.btn 
+		width 60%
+
+
+#parts-header
+	.search 
+		text-align center
+		padding 20px
+		i 
+			margin-right 20px
+			opacity 0.7
+		input 
+			width 500px
+			padding 5px 20px
+			text-align left
+#parts-body
+	box-shadow 1px 2px 3px rgba(0,0,0,0.5)
+	th 
+		cursor pointer
+		opacity 0.7
+		&:hover 
+			opacity 1
+	th.active 
+		font-style italic
+		background none
+		color purple-light
+		text-shadow 1px 2px 3px rgba(0,0,0,0.3)
+	td.order
+		// color purple-light
+		text-shadow 1px 2px 3px rgba(0,0,0,0.3)
+
+#cards 
+	.thead-wrap
+		padding 0 10px
+		.thead
+			font-size 0.8em
+			margin-bottom 5px
+			font-weight 400
+			opacity 0.5
+
+	.line-card
+		background #f8f8f8
+		margin-bottom 10px
+		padding 10px
+		font-family 'courier new'
+		font-size 0.9em
+

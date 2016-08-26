@@ -1,0 +1,19 @@
+//- 
+//- 
+mixin field(type, name, ph, cls, id)
+	input(type=type, name='#{name}', class=cls, placeholder='#{ph}', id='#{id}')
+
+mixin readonly-field(type, name, ph, cls, id)
+	input(type=type, name='#{name}', class=cls, placeholder='#{ph}', id='#{id}' readonly)
+//- 
+//- 
+mixin button(type, value, cls, id)
+	button(type=type, class=cls, id=id)= value
+//- 
+//- 
+mixin link(href, name, cls)
+	a(class=cls, href=href)= name
+//- 
+//- 
+mixin cbutton(value, cls, id)
+	button(class=cls, id=id)= value

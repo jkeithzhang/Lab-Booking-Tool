@@ -1,0 +1,25 @@
+.modal
+	.modal-dialog
+		.modal-content
+			.modal-header
+				div.modal-title 
+					div(class='label' style="color:black;") Add Node
+					button.close(ng-click='$hide()') x 
+
+			.modal-body
+				div.addNodePanel(ng-controller='nodeBookingCtrl')
+					h5 REMOVE NODE
+					form(ng-submit="removeNode(node)")
+						table.table.row
+							tr 
+								td 
+									div(flash-alert='error', active-class='in alert', class='fade')
+										span.alert-message {{flash.message}}
+									div(flash-alert='success', active-class='in alert', class='fade')
+										span.alert-message {{flash.message}}
+							tr 
+								td
+									input.medium(ng-model='node.ip', placeholder='IP', required)
+							tr
+								td
+									button.btn.btn-primary(type="submit") Remove

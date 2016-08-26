@@ -1,0 +1,33 @@
+#content
+	width 800px
+	height 600px
+	font-size font-small
+	overflow scroll
+
+b 
+	color txt-blue
+
+b.error
+	color err-red
+
+ul.node-list
+	list-style-type none !important
+	li.node-item
+		cursor pointer
+		opacity 0.8
+		&:hover
+			opacity 1
+			color txt-blue
+	li.node-item.active
+		font-weight bold
+		font-style italic
+	li.node-item.active.control
+		opacity 0.6
+		&:hover
+			opacity 1
+			color txt-blue
+input.cmd
+	width 580px
+	margin-right margin-regular
+
+

@@ -1,0 +1,42 @@
+.modal#cards
+	.modal-dialog
+		.modal-content
+			.modal-header
+				div.modal-title 
+					span &nbsp; &middot; &nbsp; {{cards.length}} cards in total&nbsp; &middot; &nbsp;
+					button.close(ng-click='$hide()') x 
+
+			.modal-body
+				.thead-wrap
+					.thead.row
+						.col-md-1 SLOT
+						.col-md-3 EQUIPPED
+						.col-md-3 PROVISIONED
+						.col-md-2 ADMIN
+						.col-md-2 OPER
+				.line-card(ng-repeat='(key, card) in cards')
+					//- span SLOT {{key}}
+					
+					div.row(ng-repeat='iomObj in card.IOM')
+						//- div --IOM--
+						.col-md-1 {{iomObj.slot}}
+						.col-md-3 {{iomObj.equipped}}
+						.col-md-3 {{iomObj.provisioned}}
+						.col-md-2 {{iomObj.admin}}
+						.col-md-2 {{iomObj.oper}}
+					div.row(ng-repeat='mdaObj in card.MDA')
+						//- div --MDA--
+						.col-md-1 {{mdaObj.slot}}
+						.col-md-3 {{mdaObj.equipped}}
+						.col-md-3 {{mdaObj.provisioned}}
+						.col-md-2 {{mdaObj.admin}}
+						.col-md-2 {{mdaObj.oper}}
+					
+						
+						
+
+
+			.modal-footer
+
+				button.btn.btn-warning(ng-click='$hide()') Cancel
+				button.btn.btn-primary(ng-controller='nodeBookingCtrl', ng-click="bookMe(node)") OK

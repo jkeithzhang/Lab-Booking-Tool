@@ -1,0 +1,51 @@
+.modal
+	.modal-dialog
+		.modal-content
+			.modal-header
+				div.modal-title 
+					div(class='label {{ipClass}}') {{node.ip}} 
+					span &nbsp; &middot; &nbsp; {{node.type}} &nbsp; &middot; &nbsp;
+					span(ng-if='node.version') {{node.version}}
+					button.close(ng-click='$hide()') x 
+
+			.modal-body
+				table.table
+					tr 
+						td.pull-right ACTIVE IP
+						td
+							input.medium(ng-model='node.ip', placeholder='')
+					tr 
+						td.pull-right TYPE
+						td
+							input.medium(ng-model='node.type', placeholder='')
+					tr 
+						td.pull-right VERSION
+						td
+							input.medium(ng-model='node.version', placeholder='')
+					tr 
+						td.pull-right USERNAME
+						td
+							input.medium(ng-model='node.username', placeholder='')
+					tr 
+						td.pull-right PASSWORD
+						td
+							input.medium(ng-model='node.password', placeholder='')
+					tr 
+						td.pull-right POSITION 
+						td 
+							input.small(ng-model='node.position.row', placeholder='ROW') 
+							&nbsp;
+							input.small(ng-model='node.position.rack', placeholder='RACK') 
+							&nbsp;
+							input.small(ng-model='node.position.pos', placeholder='POSITION') 
+					tr 
+						td.pull-right SIZE
+						td
+							input.small(ng-model='node.position.size', placeholder='')
+
+				div(flash-alert='success', active-class='in alert', class='fade')
+					span.alert-message {{flash.message}}
+
+			.modal-footer()
+				button.btn.btn-warning(ng-click='$hide()') Cancel
+				button.btn.btn-primary(ng-controller='nodeBookingCtrl', ng-click="updateMe(node)") OK

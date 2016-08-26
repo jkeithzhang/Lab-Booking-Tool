@@ -1,0 +1,24 @@
+.modal-header
+	div.modal-title 
+		div(class='label {{ipClass}}') {{node.ip}} 
+		span &nbsp; &middot; &nbsp; {{node.type}} &nbsp; &middot; &nbsp;
+		span(ng-if='node.version') {{node.version}}
+		
+
+.modal-body
+	table.table
+		tr
+			td.pull-right START 
+			td 
+				quick-datepicker(ng-model='startDate', date-format='EEEE, MM/dd/yyyy', disable-timepicker='true')
+		tr 
+			td.pull-right END
+			td
+				quick-datepicker(ng-model='endDate', date-format='EEEE, MM/dd/yyyy', disable-timepicker='true')
+
+	div(flash-alert='success', active-class='in alert', class='fade')
+		span.alert-message {{flash.message}}
+
+.modal-footer()
+	button.btn.btn-warning(ng-click='cancel()') Cancel
+	button.btn.btn-primary(ng-controller='nodeBookingCtrl', ng-click="bookMe(node)") OK
