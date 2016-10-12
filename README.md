@@ -1,3 +1,3 @@
 # Lab-Booking-Tool
 
-Lab booking tools used by internal employee to booking nodes in the lab.
+Labook is a scheduler tool used by Nokia internal employees to manage lab related tasks.
