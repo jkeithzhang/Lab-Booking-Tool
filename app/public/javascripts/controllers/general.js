@@ -6,11 +6,15 @@ angular.module('bookingController')
 					Cookie.ifexpire()
 						.success(function(data) {
 							if(data == 'expired') {
-								$scope.user = {};											
+								$scope.user = false;											
 							} else {
 								$scope.user = data[0];
+								console.log(">>>"+JSON.stringify($scope.user));
 							}						
-						});
+						})
+						.error(function(data) {
+							console.log("ERROR : " + data);
+						})
 			}
 
 			//Log in
@@ -76,7 +80,10 @@ angular.module('bookingController')
 				LDAP.logout($scope.user.csl)
 					.success(function(data) {
 						console.log('log out successfully');
-						$scope.user = {};						
+						$scope.user = {};
+						setTimeout(function() {
+							window.location.reload();
+						}, 100);					
 					})
 			}
 

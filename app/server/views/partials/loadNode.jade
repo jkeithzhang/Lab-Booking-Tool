@@ -13,7 +13,7 @@
 				td.col-md-2(style="text-align:center")
 					a(ng-if='hasLog(node.ip)', ng-click='getHistory(node)',  ng-controller='modalCtrl', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/history-modal', bs-modal="modal") History				
 				td.col-md-2(style="text-align:center")
-					i.pe-7s-date.pe-lg.pe-va.book-submit(ng-if="user.authenticated" ng-controller='modalCtrl', ng-click='setNode(node);connectNode(node)', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/book-modal', bs-modal="modal")
+					i.pe-7s-date.pe-lg.pe-va.book-submit(ng-controller='modalCtrl', ng-click='setNode(node);connectNode(node)', data-animation="am-fade-and-scale", data-placement="center", data-template='../partials/book-modal', bs-modal="modal")
 	//- busy nodes view
 	.table-container(ng-if="filter == 'busy'")
 		table.booking-table.table.table-striped.table-hover(ng-table="tableParams", show-filter="true")

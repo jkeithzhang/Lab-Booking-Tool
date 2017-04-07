@@ -3,43 +3,44 @@ include includes/mixins
 extends layout
 
 block content
-	.navbar.top-nav
-		.container
-			.navbar-brand.col-md-2 laBook
-			//- 
-			.navbar-right.col-md-offset-6.col-md-2(ng-controller='browserCtrl', ng-if='!user.authenticated')
-				a(ng-if='showlink', href='http://{{host}}:2000/#/login') LOG IN
-					&nbsp;
-				button.btn.btn-user
-					a(href='#/login') 
-						i.pe-7s-user.pe-2x.pe-va
-			.navbar-right.col-md-2(ng-if='user.authenticated')
-				span.username 
-					i.pe-7s-user.pe-2x.pe-va 
-					&nbsp;
-					{{user.first_name }} {{user.last_name }}
-				button#btn-logout.btn.btn-primary.eject-button(ua-logout)
-					i.pe-7s-power.pe-lg.pe-va
+	.whole(ng-controller='ldapCtrl', ng-init='auth()')
+		.navbar.top-nav
+			.container
+				.navbar-brand.col-md-2 laBook
+				//- 
+				.navbar-right.col-md-offset-6.col-md-2(ng-controller='browserCtrl', ng-if='!user')
+					a(ng-if='showlink', href='http://{{host}}:2000/#/login') LOG IN
+						&nbsp;
+					button.btn.btn-user
+						a(href='#/login') 
+							i.pe-7s-user.pe-2x.pe-va
+				.navbar-right.col-md-2(ng-if='user')
+					span.username 
+						i.pe-7s-user.pe-2x.pe-va 
+						&nbsp;
+						{{user.first_name }} {{user.last_name }}
+					button#btn-logout.btn.btn-primary.eject-button(ng-click='logout()')
+						i.pe-7s-power.pe-lg.pe-va
 
-	.navbar.sub-nav(ng-controller='navCtrl', class="{{subNavClass}}")
-		.container
-			ul.nav.nav-tabs.sub-nav-tabs
-				li(ng-class="{active:isActive('/loadNodes/free')}")
-					a(href="#loadNodes/free") Free
-				li(ng-class="{active:isActive('/loadNodes/busy')}")
-					a(href="#loadNodes/busy") Busy
-				li(ng-if='user.authenticated', ng-class="{active:isActive('/loadNodes/mine')}")
-					a(href="#loadNodes/mine") My Bookings
-				li(ng-class="{active:isActive('/labMap/all')}")
-					a(href="#labMap/all") Map
-				li(ng-class="{active:isActive('/search')}")
-					a(href="#search") Search
-				li(ng-class="{active:isActive('/ofpp')}")
-					a(href="#ofpp") Optical Fibers				
-				li(ng-if='user.authenticated && user.permissions.admin.value', ng-class="{active:isActive('/loadNodes/config')}")
-					a(href="#loadNodes/config") Admin Portal
-	div.ng-view-class.row
-		div(ng-view)
+		.navbar.sub-nav(ng-controller='navCtrl', class="{{subNavClass}}")
+			.container
+				ul.nav.nav-tabs.sub-nav-tabs
+					li(ng-class="{active:isActive('/loadNodes/free')}")
+						a(href="#loadNodes/free") Free
+					li(ng-class="{active:isActive('/loadNodes/busy')}")
+						a(href="#loadNodes/busy") Busy
+					li(ng-class="{active:isActive('/loadNodes/mine')}")
+						a(href="#loadNodes/mine") My Bookings
+					li(ng-class="{active:isActive('/labMap/all')}")
+						a(href="#labMap/all") Map
+					li(ng-class="{active:isActive('/search')}")
+						a(href="#search") Search
+					li(ng-class="{active:isActive('/ofpp')}")
+						a(href="#ofpp") Optical Fibers				
+					li(ng-class="{active:isActive('/loadNodes/config')}")
+						a(href="#loadNodes/config") Admin Portal
+		div.ng-view-class.row
+			div(ng-view)
 		
 
 block scripts
@@ -54,8 +55,8 @@ block scripts
 	script(src='/vendor/angular/angular-route/angular-route.min.js')
 	script(src='/vendor/angular/angular-socket-io/socket.min.js')
 	script(src='/vendor/angular/ngQuickDate/dist/ng-quick-date.min.js')
-	script(src='/vendor/angular/userapp/userapp.client.js')
-	script(src='/vendor/angular/userapp-angular/angularjs.userapp.js')
+	//- script(src='/vendor/angular/userapp/userapp.client.js')
+	//- script(src='/vendor/angular/userapp-angular/angularjs.userapp.js')
 	script(src='/vendor/angular/spin.js/spin.js')
 	script(src='/vendor/angular/angular-spinner/angular-spinner.js')	
 	//- app

@@ -721,7 +721,7 @@ module.exports = function(io) {
 								msg+='<b>'+tos[email][date][index]+'</b>, expire on: '+date+'<br>';
 							}
 						}
-						msg+='<br><p style="color:purple">Note that Labook will clear your nodes automatically once the nodes passed end date, if you found any bugs or errors in T3C labook, please report to Ke Zhang (ke.zhang@alcatel-lucent.com), thank you!</p>';
+						msg+='<br><p style="color:purple">Note that Labook will clear your nodes automatically once the nodes passed end date, if you found any bugs or errors in T3C labook, please report to Ke Zhang (ke.zhang@alcatel-lucent.com), thank you! [Link: http://tecpro.alcatel-lucent.com:2000]</p>';
 						// console.log('php app/server/library/sendmail.php '+email+' '+subject+' '+msg);
 						exec('php app/server/library/sendmail.php '+"'"+email+"'"+' '+"'"+subject+"'"+' '+"'"+msg+"'", function(err, stdout, stderr) { 
 							console.log(stdout);
@@ -827,7 +827,7 @@ module.exports = function(io) {
 			{ ip: node.ip }, 
 			{
 				$set: {
-					owner: owner.login,
+					owner: owner.csl,
 					start: options.start,
 					end: options.end,
 					startDate: prettify(options.start),
@@ -846,7 +846,7 @@ module.exports = function(io) {
 						}, 
 						{
 							$set: {
-								"owner": owner.login
+								"owner": owner.csl
 							}
 						}, 
 						{
@@ -860,7 +860,7 @@ module.exports = function(io) {
 												log: [
 													{ 
 														start: options.start,
-														owner: owner.login,
+														owner: owner.csl,
 														end: options.end
 													}
 												] 
@@ -873,7 +873,7 @@ module.exports = function(io) {
 												$push: {
 													log: {
 														start: options.start,
-														owner: owner.login,
+														owner: owner.csl,
 														end: options.end
 													}
 												}
@@ -901,7 +901,7 @@ module.exports = function(io) {
 																			{ 
 																				start: options.start,
 																				nodeIP: recc.ip,
-																				owner: owner.login,
+																				owner: owner.csl,
 																				end: options.end
 																			}
 																		] 
@@ -915,7 +915,7 @@ module.exports = function(io) {
 																			log: {
 																				start: options.start,
 																				nodeIP: recc.ip,
-																				owner: owner.login,
+																				owner: owner.csl,
 																				end: options.end
 																			}
 																		}

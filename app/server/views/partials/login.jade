@@ -5,25 +5,24 @@
 			h1 
 				a.backHome(href='#/loadNodes/free') 
 					i.pe-7s-home.pe-4x.pe-va
-		form(ua-login, ua-error='error-msg')
-			table.table
-				tr
-					td
-						input(name='login', placeholder='CSL')
-				tr
-					td
-						input(name='password', placeholder='Password', type='password')
-				tr
-					td &nbsp;
-				tr
-					td
-						button.btn(type='submit') LOG IN 
-				tr 
-					td 
-						span &nbsp; or &nbsp; 
-				tr
-					td
-						a(href='#signup', ng-controller='helpCtrl', data-title='{{tooltip.signup}}', data-placement="right", data-animation="am-fade-and-scale", bs-tooltip="tooltip") 
-							i.pe-7s-add-user.pe-3x.pe-va
+		table.table(ng-controller='userAuthCtl' ng-model='info')
+			tr
+				td
+					input(ng-model='info.csl', placeholder='CSL')
+			tr
+				td
+					input(ng-model='info.cip', placeholder='Password', type='password')
+			tr
+				td &nbsp;
+			tr
+				td
+					button.btn(ng-click='login(info)') LOG IN
+			tr 
+				td 
+					span &nbsp; or &nbsp; 
+			tr
+				td
+					a(href='#signup', ng-controller='helpCtrl', data-title='{{tooltip.signup}}', data-placement="right", data-animation="am-fade-and-scale", bs-tooltip="tooltip") 
+						i.pe-7s-add-user.pe-3x.pe-va
 			p#error-msg
 .patchingPanel &nbsp;

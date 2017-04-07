@@ -434,7 +434,7 @@ UserApp.initialize = function(settings){
 
 // Set which base address to call. E.g. 'api.userapp.io'.
 UserApp.setBaseAddress = function(address){
-    this.global.baseAddress = address || 'api.userapp.io';
+    this.global.baseAddress = address || 'deprecated-api.userapp.io';
     return this;
 }
 

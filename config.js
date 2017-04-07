@@ -1,8 +1,8 @@
 // DEV
 var mongo_dev = {
 	dbPort: 	27017,
-	dbHost: 	'localhost',
-	dbName: 	'booking'
+	dbHost: 	'138.120.131.85',
+	dbName: 	'booking_ke'
 };
 var php_path_dev = '/usr/bin/';
 
@@ -10,7 +10,7 @@ var php_path_dev = '/usr/bin/';
 var mongo_prod = {
 	dbPort: 	27017,
 	dbHost: 	'138.120.131.85',
-	dbName: 	'booking'
+	dbName: 	'booking_ke'
 };
 var php_path_prod = '/usr/bin/';
 

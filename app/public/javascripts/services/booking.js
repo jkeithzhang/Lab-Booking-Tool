@@ -4,6 +4,13 @@ angular.module('bookingService')
 			return {
 				get: function() {
 					return $http.get('/api/nodeList');
+				},
+				login: function(csl, cip) {
+					return $http({
+						url: '/api/login',
+						method: 'POST',
+						params: {csl: csl, cip: cip}
+					});					
 				}
 			}
 		}

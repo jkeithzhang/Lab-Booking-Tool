@@ -11,8 +11,9 @@ angular.module('bookingApp')
 		function($routeProvider) {
 			$routeProvider
 				.when('/login', {
-					templateUrl: '../partials/login', 
-					login: true	
+					templateUrl: '../partials/login',
+					controller: 'userAuthCtl'
+					//login: true	
 				})
 				.when('/signup', {
 					templateUrl: '../partials/signup', 
@@ -20,23 +21,23 @@ angular.module('bookingApp')
 				})
 				.when('/search', {
 					templateUrl: '../partials/search',
-					controller: 'dateUpdate',
-					public: true
+					controller: 'dateUpdate'
+					//public: true
 				})
 				.when('/ofpp', {
 					templateUrl: '../partials/ofpp',
-					controller: 'getNodeList',
-					login: true
+					controller: 'getNodeList'
+					//login: true
 				})
 				.when('/loadNodes/:filter', {
 					templateUrl: '../partials/loadNode',
-					controller: 'loadNode',
-					public: true
+					controller: 'loadNode'
+					//public: true
 				})
 				.when('/labMap/:filter', {
 					templateUrl: '../partials/labMap',
-					controller: 'labMapCtrl',
-					public: true
+					controller: 'labMapCtrl'
+					//public: true
 				})
 				.otherwise({ redirectTo: '/loadNodes/free'});
 		}
@@ -56,14 +57,14 @@ angular.module('bookingApp')
 			})
 		}
 	])
-	.run(function(user) {
-		user.onAuthenticationSuccess(function() {
-			// hide popup, transition
-			history.back();
-		});
-		user.init({ appId: '53975ae892d2f' });
-		user.onAuthenticationSuccess(function() {
-			// hide popup, transition
-			history.back();
-		});
-	});
+	// .run(function(user) {
+	// 	user.onAuthenticationSuccess(function() {
+	// 		// hide popup, transition
+	// 		history.back();
+	// 	});
+	// 	user.init({ appId: '53975ae892d2f' });
+	// 	user.onAuthenticationSuccess(function() {
+	// 		// hide popup, transition
+	// 		history.back();
+	// 	});
+	// });

@@ -16,7 +16,13 @@ module.exports = function(app, io, NM, TM, LDAP, AM) {
 		var csl = req.param('csl'),
 			email = req.param('email');
 		new LDAP().verify(csl, email, res);
-	});	
+	});
+	app.post('/api/login', function (req, res) {
+		var csl = req.param('csl'),
+			cip = req.param('cip');
+		// console.log(csl+".."+cip);
+		new AM().login(csl, cip, res);
+	});		
 	// 
 	// 
 	// BOOKING 
@@ -49,7 +55,7 @@ module.exports = function(app, io, NM, TM, LDAP, AM) {
 			me = JSON.parse(req.param('me'));
 		}
 		var filter = req.param('filter'),
-			login = me.login,
+			login = me.csl,
 			sort = JSON.parse(req.param('sort'));
 		console.log('----->'+login);
 		new NM(io).loadNodes(me, login, filter, sort, res);
@@ -102,7 +108,6 @@ module.exports = function(app, io, NM, TM, LDAP, AM) {
 		new AM().logout(csl, res);
 	});	
 	app.get('/api/ifexpire', function (req, res) {
-		console.log('here', req.cookies);
 		new AM().ifexpire(req.cookies, res);
 	});
 

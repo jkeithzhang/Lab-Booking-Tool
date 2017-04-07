@@ -1,11 +1,30 @@
 angular.module('bookingController')
+	.controller('userAuthCtl', ['$scope', '$http', 'Scan', 'mySocket', '$location',
+		function($scope, $http, Scan, mySocket, $location) {
+			$scope.login = function(info) {
+				$scope.user.authenticated = true;
+				$scope.user.authorized = true;
+				Scan.login(info.csl, info.cip)
+					.success(function(data) {
+						console.log("--->"+JSON.stringify(data));
+						history.back();
+						setTimeout(function() {
+							window.location.reload();
+						}, 100);
+					})
+					.error(function(data) {
+						console.log("ERROR : " + data);
+					})
+			}
+		}
+	])
 	.controller('getNodeList', ['$scope', '$http', 'Scan', 'mySocket', '$location',
 		function($scope, $http, Scan, mySocket, $location) {
 			$scope.getNodeList = function() {
 				Scan.get()
 					.success(function(data) {
-						console.log(data)
-						console.log($scope.udata)
+						// console.log(data)
+						// console.log($scope.udata)
 						$scope.nodeList = data;
 
 						$scope.free = [],
@@ -97,8 +116,8 @@ angular.module('bookingController')
 						if(typeof($scope.user) == 'string') {
 							$scope.user = 'empty';
 						}
-						console.log(filter); //here
-						console.log($scope.user);
+						console.log('>>>>>>>'+filter); //here
+						console.log('crap::::::'+$scope.user);
 						Load.get(filter, $scope.user, {})
 							.success(function(data) {
 								$scope.filter = filter;
@@ -280,6 +299,7 @@ angular.module('bookingController')
 			}
 
 			$scope.bookMe = function(node) {
+				console.log($scope.user);
 				Book.post(node, $scope.user, 'book', {start: $scope.startDate, end: $scope.endDate}) 
 					.success(function(data) {
 						// mySharedService.prepForBroadcast('refreshNodeList');

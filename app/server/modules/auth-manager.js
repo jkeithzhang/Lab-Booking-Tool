@@ -6,7 +6,7 @@ var	userDB 		= require('./model').users(),
 
 module.exports = function() {
 
-	this.login = function(csl, res) {
+	this.login = function(csl, cip, res) {
 		userDB.update(
 			{csl: csl},
 			{
@@ -17,23 +17,14 @@ module.exports = function() {
 				if(err) {
 					console.log(err);
 				} else {
-					userDB.find({
-						$and: [
-							{ csl : csl },
-						]
-					}, function(err, cursor) {
-						if (err) { console.log('ERRROROROROROROR') }
-						else {
-							cursor.toArray(function(err, rec) {
-								if(err) {
-									console.log('something is fishy')
-								} else {
-									res.cookie('mycookie', rec, { expires: new Date(Date.now() + 604800000), httpOnly: true }).send();
-									res.json(rec);
-								}
-							})
+					userDB.findOne({csl:csl}, function(err, result) {
+						if (result) {
+							res.cookie('mycookie', result, { expires: new Date(Date.now() + 604800000), httpOnly: true }).send();
+							res.json(result);
+						} else {
+							console.log('log in failed');
 						}
-					});						
+					})				
 				}
 			}
 		);
@@ -102,24 +93,24 @@ module.exports = function() {
 
 		if(!cookieobject.hasOwnProperty('mycookie')) { //expired already, authenticated needed EAQUL to 0 ADD ANOTHER FIELD
 			console.log('expired');
-			userDB.update(
-				{csl: csl},
-				{
-					$set: {
-						authenticated: 0
-					}
-				}, function(err, result) {
-					if(err) {
-						console.log(err);
-					} else {
-						res.json('done');
-					}
-				}
-			);
+			// userDB.update(
+			// 	{csl: csl},
+			// 	{
+			// 		$set: {
+			// 			authenticated: 0
+			// 		}
+			// 	}, function(err, result) {
+			// 		if(err) {
+			// 			console.log(err);
+			// 		} else {
+			// 			res.json('done');
+			// 		}
+			// 	}
+			// );
 			res.send('expired');			
 		} else {	//return user info
-			console.log("in AM: ", cookieobject.mycookie[0]);
-			cookieinfo = cookieobject.mycookie[0];  //object here
+			cookieinfo = cookieobject.mycookie;  //object here
+			console.log("in AM: ", cookieobject.mycookie);
 			var csl = cookieinfo.csl;
 			userDB.find({
 				$and: [

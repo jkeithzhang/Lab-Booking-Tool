@@ -11,16 +11,16 @@ $mail = new PHPMailer;
 //$mail->SMTPDebug = 3;                               // Enable verbose debug output
 
 $mail->isSMTP();                                      // Set mailer to use SMTP
-$mail->Host = 'mail.alcatel-lucent.com';  // Specify main and backup SMTP servers
+$mail->Host = 'outlook.office365.com';  // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                               // Enable SMTP authentication
-$mail->Username = 'na02\kzhan007';                 // SMTP username
+$mail->Username = 'ke.2.zhang@on.nokia.com';                 // SMTP username
 // $mail->Username = 'na02\tianweiz';
-$mail->Password = "Liyue@901112$";                           // SMTP password
+$mail->Password = "zgytkphnmznznrhf";                           // SMTP password
 // $mail->Password = "#ZSky0628";
 $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
 $mail->Port = 587;                                    // TCP port to connect to
 
-$mail->From = 'ke.zhang@alcatel-lucent.com';
+$mail->From = 'ke.2.zhang@nokia.com';
 // $mail->From = 'tianwei.zhang@alcatel-lucent.com';
 $mail->FromName = 'T3C labook';
 $mail->addAddress($to);     // Add a recipient

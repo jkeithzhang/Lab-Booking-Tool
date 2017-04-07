@@ -5,7 +5,7 @@ var bookingApp = angular.module('bookingApp', [
 	'bookingFilter',
 	'bookingDirective',
 	'ngQuickDate',
-	'UserApp',
+	// 'UserApp',
 	'ngAnimate',
 	'angular-flash.service', 
 	'angular-flash.flash-alert-directive',
